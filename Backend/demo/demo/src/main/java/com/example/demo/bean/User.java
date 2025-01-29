@@ -11,7 +11,6 @@ public class User {
 	private String email;
 	private String password;
 	private String username;
-	private String contactNumber;
 	private String role; 
 	private String status; 
 	public String getId() {
@@ -23,14 +22,13 @@ public class User {
 	public User() {
 		
 	}
-	public User(String id, String email, String password, String username,  String contactNumber,
+	public User(String id, String email, String password, String username,  
 			String role, String status) {
 		super();
 		this.id = id;
 		this.email = email;
 		this.password = password;
 		this.username = username;
-		this.contactNumber = contactNumber;
 		this.role = role;
 		this.status = status;
 	}
@@ -53,12 +51,7 @@ public class User {
 		this.username = username;
 	}
 	
-	public String getContactNumber() {
-		return contactNumber;
-	}
-	public void setContactNumber(String contactNumber) {
-		this.contactNumber = contactNumber;
-	}
+	
 	public String getRole() {
 		return role;
 	}

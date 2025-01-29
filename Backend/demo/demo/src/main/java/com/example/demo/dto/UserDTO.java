@@ -7,18 +7,18 @@ public class UserDTO {
     private String password;
     private String email;
     private String username;
-    private String contactNumber;
+ 
     private String role; 
     private String status; 
 
     public UserDTO() {
     }
 
-    public UserDTO(String id, String email, String username, String contactNumber, String role, String status) {
+    public UserDTO( String id ,String email, String password ,String username,  String role, String status) {
         this.id = id;
         this.email = email;
         this.username = username;
-        this.contactNumber = contactNumber;
+        this.password = password;
         this.role = role;
         this.status = status;
     }
@@ -49,13 +49,7 @@ public class UserDTO {
 
    
 
-    public String getContactNumber() {
-        return contactNumber;
-    }
-
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
-    }
+    
 
     public String getRole() {
         return role;

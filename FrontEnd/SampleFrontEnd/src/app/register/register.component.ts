@@ -19,7 +19,7 @@ export class RegisterComponent {
 
   registerForm: FormGroup;
   private apiUrl = 'http://localhost:8081/user/register';
-  message: { message: string } = { message: '' };
+  message: string = "";
 
   constructor(private fb: FormBuilder , private http: HttpClient , private router:Router) {
     this.registerForm = this.fb.group({
@@ -33,12 +33,11 @@ export class RegisterComponent {
 
   onSubmit(): void {
     if (this.registerForm.valid) {
-      this.http.post<{ message: string }>(this.apiUrl, this.registerForm.value).subscribe({
-        next: (response) => {
+      this.http.post(this.apiUrl, this.registerForm.value , { responseType: 'text' }).subscribe((response) => {
           this.message = response; 
-          this.router.navigate(['/login']); 
+          //this.router.navigate(['/login']); 
         }
-      });
+      );
     }
   }
 }

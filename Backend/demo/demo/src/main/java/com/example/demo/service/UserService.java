@@ -24,15 +24,20 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
     
     public Mono<String> registerUser(UserDTO userDTO) {
-        User user = new User();
-        user.setEmail(userDTO.getEmail());
-        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
-        user.setRole("CUSTOMER");
-        user.setStatus("PENDING");
-
-        return userRepository.save(user)
-                .thenReturn("Registration successful! Status: pending approval.");
+        
+        return userRepository.findByEmail(userDTO.getEmail())
+                .flatMap(existingUser -> Mono.just("Email already exists!")) 
+                .switchIfEmpty(
+                    userRepository.save(new User(null,
+                            userDTO.getEmail(),
+                            passwordEncoder.encode(userDTO.getPassword()),
+                            userDTO.getUsername(),
+                            "CUSTOMER",
+                            "PENDING"))
+                            .thenReturn("Registration successful! Status: pending approval.")
+                );
     }
+    
    
 	/*
 	 * public UserDTO registerUser(UserDTO userDTO) { User user =
@@ -97,9 +102,9 @@ public class UserService {
         return userRepository.findById(id)
                 .flatMap(user -> {
                     user.setStatus("APPROVED");
-                    return userRepository.save(user); // Save the updated user
+                    return userRepository.save(user); 
                 })
-                .map(this::convertToDto); // Convert the saved user to DTO
+                .map(this::convertToDto); 
     }
 	/*
 	 * public UserDTO rejectUser(String userId) { User user =
@@ -112,9 +117,9 @@ public class UserService {
         return userRepository.findById(userId)
                 .flatMap(user -> {
                     user.setStatus("REJECTED");
-                    return userRepository.save(user); // Save the updated user
+                    return userRepository.save(user); 
                 })
-                .map(this::convertToDto); // Convert the saved user to DTO
+                .map(this::convertToDto); 
     }
 
    
@@ -125,7 +130,7 @@ public class UserService {
         userDTO.setId(user.getId());
         userDTO.setEmail(user.getEmail());
         userDTO.setUsername(user.getUsername());
-        userDTO.setContactNumber(user.getContactNumber());
+        
         userDTO.setRole(user.getRole());
         userDTO.setStatus(user.getStatus());
         return userDTO;

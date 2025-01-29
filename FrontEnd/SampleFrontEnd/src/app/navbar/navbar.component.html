@@ -1,10 +1,42 @@
 <header>
     <h2 class="logo">SampleApp</h2>
     <nav class="navigation">
-        <a href="/navbar">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-        <a href="#">Services</a>
+        <a routerLink="/navbar">Home</a>
+        <a routerLink="/about-contacts">About & Contacts</a>
+        
         <button class="loginBtn" (click)="navigateTo('/login')">Login</button>
     </nav>
 </header>
+
+<section class="hero">
+    
+    <h2>Discover the Power of Nature</h2>
+    <p>Join us in making a greener future</p>
+    <a href="#" class="btn">Explore More</a>
+</section>
+
+<section class="features">
+    <div class="feature">
+       
+        <h3>Eco-Friendly Products</h3>
+        <p>Shop our sustainable, nature-friendly items</p>
+    </div>
+    <div class="feature">
+        
+        <h3>Organic Living</h3>
+        <p>Learn about organic farming and healthy food</p>
+    </div>
+    <div class="feature">
+       
+        <h3>Nature Blog</h3>
+        <p>Read inspiring stories on conservation and adventure</p>
+    </div>
+</section>
+
+
+
+<footer>
+    <p>&copy; 2025 Nature's Haven. All rights reserved.</p>
+</footer>
+
+<router-outlet></router-outlet>

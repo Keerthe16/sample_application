@@ -1,4 +1,5 @@
-    <div class="wrapper">
+<div class="body">
+ <div class="wrapper">
         <h2>Register</h2>
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="input-box">
@@ -27,7 +28,7 @@
             </div>
             <button type="submit" [disabled]="registerForm.invalid" class="btn">Register</button>
             </form>
-            <p *ngIf="message.message != ''">{{message.message}}</p>
+            <p *ngIf="message">{{message}}</p>
             <p><a routerLink="/login">Login</a></p>
     </div>
-    
+    </div>

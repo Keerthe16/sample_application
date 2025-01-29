@@ -21,7 +21,7 @@
                 <p>Don't have an account? <a routerLink="/register-page">Register</a></p>
             </div>
         </form>
-        <p>{{message}}</p>
+        <p *ngIf="message">{{message}}</p>
     </div>
     </div>
     

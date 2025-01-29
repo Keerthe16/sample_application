@@ -36,8 +36,9 @@ export class ProductPageComponent implements OnInit {
   createProduct() {
     this.productService.createProduct(this.newProduct).subscribe(
       (data: any) => {
-        this.products.push(data); // Add new product to the list
+        this.products.push(data); 
         this.newProduct = {  };
+        this.loadProducts();
       },
       (error) => {
         console.error('Error creating product', error);
