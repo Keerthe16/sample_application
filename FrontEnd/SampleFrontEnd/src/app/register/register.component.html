@@ -1,0 +1,33 @@
+    <div class="wrapper">
+        <h2>Register</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="input-box">
+                <label for="username">Username:</label>
+                <input id = "username" formControlName = "username"/>
+                <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+                    Username must be at least 3 characters long.
+                </div>
+                <i class='bx bxs-user' ></i>
+            </div>
+            <div class="input-box">
+                <label for="email">Email:</label>
+                <input id = "email" formControlName = "email"/>
+                <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+                    Invalid email format.
+                </div>
+                <i class='bx bxs-envelope' ></i>
+            </div>
+            <div class="input-box">
+                <label for="password">Password:</label>
+                <input id = "password" type="password" formControlName = "password"/>
+                <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+                    Password must be at least 8 characters.
+                </div>
+                <i class='bx bxs-lock-alt' ></i>
+            </div>
+            <button type="submit" [disabled]="registerForm.invalid" class="btn">Register</button>
+            </form>
+            <p *ngIf="message.message != ''">{{message.message}}</p>
+            <p><a routerLink="/login">Login</a></p>
+    </div>
+    

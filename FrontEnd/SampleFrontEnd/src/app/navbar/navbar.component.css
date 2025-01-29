@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: "Poppins" , sans-serif;
+}
+
+
+/* Style for the header and navigation bar */
+header {
+    
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #2c5f2d;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.navigation {
+    
+    display: flex;
+    gap: 15px;
+}
+
+.navigation a {
+    color: #2c5f2d;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 10px;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.navigation a:hover {
+    text-decoration: underline;
+    color: #dcdcdc; /* Light Grey */
+}
+
+.loginBtn {
+    background-color: #4b8063; /* Slightly lighter shade of Forest Green */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+.loginBtn:hover {
+    background-color: #3c704e; /* Darker shade of Forest Green */
+}

@@ -1,0 +1,93 @@
+<div class="body">
+    <div class="wrapper">
+        <h2>Product Management</h2>
+      
+        <!-- Create Product Form -->
+        <form *ngIf="editProduct; else createProductForm" (ngSubmit)="updateProduct()">
+          <div>
+            <label for="name">Name:</label>
+            <input class ="input-box" type="text" [(ngModel)]="editProduct.name" name="name" required>
+          </div>
+          <div>
+            <label for="description">Description:</label>
+            <input class ="input-box" type="text" [(ngModel)]="editProduct.description" name="description" required>
+          </div>
+          <div>
+            <label for="price">Price:</label>
+            <input class ="input-box" type="number" [(ngModel)]="editProduct.price" name="price" required>
+          </div>
+          <div>
+            <label for="quantity">Quantity:</label>
+            <input class ="input-box" type="number" [(ngModel)]="editProduct.quantity" name="quantity" required>
+          </div>
+          <div>
+            <label for="category">Category:</label>
+            <input class ="input-box" type="text" [(ngModel)]="editProduct.category" name="category" required>
+          </div>
+          <div>
+            <label for="status">Status:</label>
+            <select [(ngModel)]="editProduct.status" name="status">
+              <option value="ACTIVE">ACTIVE</option>
+              <option value="INACTIVE">INACTIVE</option>
+            </select>
+          </div>
+          <button type="submit">Update Product</button>
+          <button type="button" (click)="editProduct = null">Cancel</button>
+        </form>
+      
+        <ng-template #createProductForm>
+          <form (ngSubmit)="createProduct()">
+            <div>
+              <label for="name">Name:</label>
+              <input class ="input-box" type="text" [(ngModel)]="newProduct.name" name="name" required>
+            </div>
+            <div>
+              <label for="description">Description:</label>
+              <input class ="input-box" type="text" [(ngModel)]="newProduct.description" name="description" required>
+            </div>
+            <div>
+              <label for="price">Price:</label>
+              <input class ="input-box" type="number" [(ngModel)]="newProduct.price" name="price" required>
+            </div>
+            <div>
+              <label for="quantity">Quantity:</label>
+              <input class ="input-box" type="number" [(ngModel)]="newProduct.quantity" name="quantity" required>
+            </div>
+            <div>
+              <label for="category">Category:</label>
+              <input class ="input-box" type="text" [(ngModel)]="newProduct.category" name="category" required>
+            </div>
+            <div>
+              <label for="status">Status:</label>
+              <select [(ngModel)]="newProduct.status" name="status">
+                <option value="ACTIVE">ACTIVE</option>
+                <option value="INACTIVE">INACTIVE</option>
+              </select>
+            </div>
+            <button type="submit">Create Product</button>
+          </form>
+        </ng-template>
+      
+        <hr>
+      
+        <!-- Product List -->
+        <div *ngIf="products.length">
+          <h3>Existing Products</h3>
+          <ul>
+            <li *ngFor="let product of products">
+              <strong>{{ product.name }}</strong>
+              <p>{{ product.description }}</p>
+              <p>Price: ${{ product.price }}</p>
+              <p>Quantity: {{ product.quantity }}</p>
+              <p>Status: {{ product.status }}</p>
+              <button (click)="setEditProduct(product)">Edit</button>
+              <button (click)="deleteProduct(product.id)">Delete</button>
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="!products.length">
+          <p>No products found.</p>
+        </div>
+      </div>
+    </div>
+      

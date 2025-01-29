@@ -1,0 +1,27 @@
+<div class="body">
+    <div class="wrapper">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <h2>Login</h2>
+            <div class="input-box">
+                <input type="text" formControlName="email" placeholder="Email" required>
+                <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+                    Invalid Username.
+                </div>
+                <i class='bx bxs-user' ></i>
+            </div>
+            <div class="input-box">
+                <input type="password"  formControlName="password"  placeholder="Password" required>
+                <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                    Password must be at least 8 characters.
+                </div>
+                <i class='bx bxs-lock-alt' ></i>
+            </div>
+            <button type="submit" class="btn" [disabled]="loginForm.invalid">Login</button>
+            <div class="register-link">
+                <p>Don't have an account? <a routerLink="/register-page">Register</a></p>
+            </div>
+        </form>
+        <p>{{message}}</p>
+    </div>
+    </div>
+    
